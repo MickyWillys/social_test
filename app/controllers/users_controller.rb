@@ -7,6 +7,6 @@ class UsersController < ApplicationController
 	end
 	def mailbox
 		@user = User.find(params[:id])
-		@received_mails = @user.mailbox.inbox
+		@conversations = @user.mailbox.inbox
 	end
 end

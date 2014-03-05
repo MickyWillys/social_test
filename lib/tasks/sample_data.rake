@@ -2,7 +2,7 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
 
-    99.times do |n|
+    10.times do |n|
       prenom = Faker::Name.first_name 
       nom = Faker::Name.last_name
       fullname = prenom + " " + nom
@@ -13,9 +13,9 @@ namespace :db do
 
   task relationship: :environment do
 
-    300.times do |n|
-      h_id = rand(98)
-      f_id = rand(98)
+    30.times do |n|
+      h_id = rand(10)
+      f_id = rand(10)
       Relation.create!(home_id: h_id, follow_id:f_id ) if h_id != f_id
     end
   end
@@ -34,7 +34,7 @@ namespace :db do
         if user != user2
           u = [user,user2]
           content = Faker::Lorem.sentences(3).join
-          user.send_message(user2, title[rand(0..4)], content)
+          user.send_message(user2, content , title[rand(0..4)] + " " + t.to_s)
           c = Conversation.last
           
           r= rand(3)

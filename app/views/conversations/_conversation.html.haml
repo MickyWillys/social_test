@@ -1,0 +1,6 @@
+%ul.panel.callout.radius
+	%h2= conversation.subject + " (" + conversation.count_messages.to_s + ")"
+	%h4= User.find(conversation.last_message.sender_id).name
+	%p= conversation.last_message.body
+
+
