@@ -47,3 +47,40 @@ namespace :db do
     end
   end
 end
+
+namespace :db do
+  desc "Fill database with sample data"
+  task project: :environment do
+
+    action = ["Build", "Smash", "Deploy", "Manage", "Deal"]
+    subject = ["the IT department", "the house", "the website", "your life", "your country"]
+
+    5.times do
+
+      project_name = action[rand(4)] + " " + subject[rand(4)]
+      content = Faker::Lorem.sentences(3).join
+
+      Project.create(title: project_name , description: content)
+
+    end
+
+    @projects = Project.all
+    @projects.each do |project|
+      project.users
+
+      r= rand(1..3)
+      r.times do
+        u = User.find(rand(1..User.count))
+        project.users << u unless project.users.include? u == true
+      end
+
+      project.users.each do |user|
+        r= rand(1..3)
+        r.times do
+          content = Faker::Lorem.sentences(1).join
+          project.comments.create(user_id: user.id, content: content)
+        end
+      end
+    end
+  end
+end

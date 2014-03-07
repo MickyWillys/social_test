@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 	end
 	def show
 		@user = User.find(params[:id])
+		@projects = @user.projects
 	end
 	def mailbox
 		@user = User.find(params[:id])

@@ -1,0 +1,9 @@
+.large-9.columns
+	%h2= project.title
+	%hr
+	%p= project.description
+.large-6.columns.centered
+	%h3= "commentaires"
+	-@comments = project.comments
+
+	%ul= render @comments

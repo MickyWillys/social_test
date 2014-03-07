@@ -1,4 +1,6 @@
 SocialTest2::Application.routes.draw do
+  resources :projects
+
   resources :users
 
 
