@@ -37,6 +37,7 @@ gem 'faker'
 gem 'pry-rails'
 gem 'mailboxer'
 gem 'foundation-rails'
+gem 'public_activity'
 
 
 # Use ActiveModel has_secure_password
